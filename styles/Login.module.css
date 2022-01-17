@@ -1,0 +1,17 @@
+.loginContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+}
+
+.mainCard {
+  max-width: 475px;
+  width: 100%;
+  padding: 24px;
+}

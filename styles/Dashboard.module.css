@@ -1,0 +1,149 @@
+.logoContainer {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainCard {
+  max-width: 475px;
+  width: 100%;
+  padding: 24px;
+}
+
+.dashboardContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding-top: 74px;
+}
+
+.dashboardContent {
+  margin-left: 20px;
+  padding: 20px;
+  width: 100%;
+  background: #e3f2fd;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+.dashboardContentOpened {
+  margin-left: 260px;
+  padding: 20px;
+  width: calc(100% - 260px);
+  background: #e3f2fd;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+.dashboardContentShift {
+  margin-left: 0;
+}
+
+.boxContainer {
+  width: 215px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerAvatar {
+  background: #e3f2fd;
+  color: #1e88e5;
+}
+
+.scrollHeight {
+  height: calc(100vh - 88px);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.listIcon {
+  min-width: 18px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.listCustomIconSub {
+  width: 6px;
+  height: 6px;
+}
+.listCustomIconSubActive {
+  width: 8px;
+  height: 8px;
+}
+.listItem {
+  margin-bottom: 5px;
+  align-items: center;
+}
+.listItemNoBack {
+  margin-bottom: 5px;
+  background-color: transparent !important;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  align-items: flex-start;
+}
+
+.menuContainer > div {
+  top: 74px;
+  width: 260px;
+  background: '#e3f2fd';
+  color: '#cecece';
+  border-right: none;
+}
+
+.logTable {
+  background: white;
+  margin-bottom: 20px;
+}
+
+.logTable > table > thead {
+  background: #002d64;
+}
+
+.logTable > table > thead > tr > th {
+  color: white;
+  font-weight: 700;
+}
+
+.logPagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.spanInput {
+  white-space: nowrap;
+  color: #616161;
+  font-weight: 600;
+}
+
+.noMargin{
+  margin: 0;
+}
+
+.noResults {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clearButton {
+  background: #2196f3;
+  color: white;
+}
+.clearButton:hover {
+  background: #2196f3;
+  color: white;
+}
+.serchButton:hover {
+  background: #002966;
+  color: white;
+}
