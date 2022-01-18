@@ -1,6 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getAccount } from '../auth-redirect';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 //-----------------------|| AUTH GUARD ||-----------------------//
 
@@ -10,14 +11,19 @@ import React from 'react';
  */
 const AuthGuard = ({ children }) => {
     const router = useRouter();
-    // TODO: logic for redirection
-    // const account = {};
-    // const { isLoggedIn } = account;
+    const [loading, setLoading] = useState(true);
 
-    // if (!isLoggedIn) {
-    //     router.push("/login");
-    // }
+    useEffect(async () => {
+        const { user } = await getAccount();
+        console.log("🚀 ~ file: AuthGuard.js ~ line 18 ~ useEffect ~ user", user)
+        if (!user) {
+            router.push('/login');
+            return;
+        }
+        setLoading(false);
+    }, [])
 
+    if (loading) return null;
     return children;
 };
 

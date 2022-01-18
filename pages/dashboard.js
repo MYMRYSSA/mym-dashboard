@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MainLayout from '../layout/MainLayout';
 import { LogsTable } from '../components/dashboard/LogsTable';
 import { Filters } from '../components/dashboard/Filters';
+import AuthGuard from '../core/utils/route-guard/AuthGuard';
 
 export default function Page() {
   const [datasource, setDatasource] = useState([]);
@@ -18,10 +19,10 @@ export default function Page() {
   };
 
   return (
-    <>
+    <AuthGuard>
       <Filters search={(filters) => search(filters, 1)} />
       <LogsTable search={(page) => search(params.filters, page)} datasource={datasource} page={params.page} maxPage={maxPage} />
-    </>
+    </AuthGuard>
   );
 }
 

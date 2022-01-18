@@ -70,7 +70,7 @@ const RestLogin = (props, { ...others }) => {
                 password: values.password
               })
               .then(function (response) {
-                if (response?.status === 201 && response.data.data.access_token) {
+                if (response?.status === 200 && response.data.data.access_token) {
                   if (scriptedRef.current) {
                     setStatus({ success: true });
                     setSubmitting(false);
