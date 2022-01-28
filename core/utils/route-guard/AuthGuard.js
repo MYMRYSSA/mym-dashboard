@@ -14,7 +14,13 @@ const AuthGuard = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(async () => {
-        const { user } = await getAccount();
+        let user;
+        try {
+            const response = await getAccount();
+            user = response.user;
+        } catch (e) {
+            user = null;
+        }
         console.log("🚀 ~ file: AuthGuard.js ~ line 18 ~ useEffect ~ user", user)
         if (!user) {
             router.push('/login');
