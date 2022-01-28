@@ -4,6 +4,24 @@ import Pagination from '@material-ui/lab/Pagination';
 import styles from '../../styles/Dashboard.module.css';
 
 export const LogsTable = ({ datasource, page, maxPage, search }) => {
+
+  const formatDocumentIds = (docIds) => {
+    const ret = '';
+    docIds.forEach(doc => {
+      ret += `, ${doc}`
+    })
+    return ret.slice(2, ret.length);
+  }
+
+  const formatDate = (date) => {
+    const formatDate = new Date(date);
+    const dd = formatDate.getDate();
+    const mm = formatDate.getMonth();
+    const yyyy = formatDate.getFullYear();
+    return `${yyyy}-${mm <= 8 ? '0' + (mm + 1) : mm + 1}-${dd}`;
+  }
+
+
   return (
     <>
       <TableContainer className={styles.logTable}>
@@ -31,11 +49,11 @@ export const LogsTable = ({ datasource, page, maxPage, search }) => {
                     {row.requestId}
                   </TableCell>
                   <TableCell align="center">{row.processId}</TableCell>
-                  <TableCell align="center">{row.documentId}</TableCell>
+                  <TableCell align="center">{formatDocumentIds(row.documentIds)}</TableCell>
                   <TableCell align="center">{row.customerId}</TableCell>
                   <TableCell align="center">{row.type}</TableCell>
-                  <TableCell align="center">{row.createdAt}</TableCell>
-                  <TableCell align="center">{row.updatedAt}</TableCell>
+                  <TableCell align="center">{formatDate(row.createdAt)}</TableCell>
+                  <TableCell align="center">{formatDate(row.updatedAt)}</TableCell>
                   <TableCell align="center">{row.bank}</TableCell>
                   <TableCell align="center">{row.currency}</TableCell>
                   <TableCell align="center">{row.paymentMethod}</TableCell>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { FormControl, Select, Button, MenuItem, OutlinedInput } from '@material-ui/core';
-import styles from '../../styles/Dashboard.module.css'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import styles from '../../styles/Dashboard.module.css';
 
 export const Filters = ({ isSubmitting, search }) => {
   const [filters, setFilters] = useState({
     requestId: '',
+    requestPaymentId: '',
     processId: '',
     documentId: '',
     customerId: '',
@@ -16,17 +19,18 @@ export const Filters = ({ isSubmitting, search }) => {
     paymentMethod: '',
     serviceId: ''
   });
-
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const bankOptions = [
-    { value: 'BCP', label: 'BCP' },
-    { value: 'BBVA', label: 'BBVA' },
-    { value: 'SCOTIABANK', label: 'SCOTIABANK' }
+    { value: '002', label: 'BCP' },
+    { value: '011', label: 'BBVA' },
+    { value: '009', label: 'SCOTIABANK' }
   ];
 
   const typeOptions = [
-    { value: 'inquire', label: 'CONSULTA DEUDA' },
-    { value: 'payment', label: 'NOTIF. PAGO' },
-    { value: 'return', label: 'NOTIF. EXTORNO' }
+    { value: 'INQUIRY', label: 'CONSULTA DEUDA' },
+    { value: 'PAYMENT', label: 'NOTIF. PAGO' },
+    { value: 'ANNULMENT', label: 'NOTIF. EXTORNO' }
   ];
 
   const currencyOptions = [
@@ -43,12 +47,30 @@ export const Filters = ({ isSubmitting, search }) => {
   ];
 
   const onClick = () => {
-    search(filters);
+    search({
+      ...filters,
+      dateFilter:
+        startDate && endDate
+          ? {
+              startDate: formatDate(startDate),
+              endDate: formatDate(endDate)
+            }
+          : undefined
+    });
+  };
+
+  const formatDate = (date) => {
+    const datetoFormat = new Date(date);
+    const dd = datetoFormat.getDate();
+    const mm = datetoFormat.getMonth();
+    const yyyy = datetoFormat.getFullYear();
+    return `${yyyy}-${mm <= 8 ? '0' + (mm + 1) : (mm + 1)}-${dd}`
   };
 
   const reset = () => {
     setFilters({
       requestId: '',
+      requestPaymentId: '',
       processId: '',
       documentId: '',
       customerId: '',
@@ -60,11 +82,26 @@ export const Filters = ({ isSubmitting, search }) => {
       paymentMethod: '',
       serviceId: ''
     });
+    setStartDate(null);
+    setEndDate(null);
   };
-  
+
   return (
     <>
       <div className={styles.filterContainer}>
+        <FormControl className={styles.noMargin}>
+          <OutlinedInput
+            type="text"
+            value={filters.requestPaymentId}
+            onChange={(event) =>
+              setFilters({
+                ...filters,
+                requestPaymentId: event.target.value
+              })
+            }
+            startAdornment={<span className={styles.spanInput}>Req Payment ID:</span>}
+          />
+        </FormControl>
         <FormControl className={styles.noMargin}>
           <OutlinedInput
             type="text"
@@ -206,6 +243,14 @@ export const Filters = ({ isSubmitting, search }) => {
             ))}
           </Select>
         </FormControl>
+        <div className={styles.datePickerContainer}>
+          <span>Fecha inicial:</span>
+          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} clearable />
+        </div>
+        <div className={styles.datePickerContainer}>
+          <span>Fecha fin:</span>
+          <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} clearable />
+        </div>
         <Button
           className={styles.serchButton}
           disableElevation

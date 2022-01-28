@@ -147,3 +147,29 @@
   background: #002966;
   color: white;
 }
+
+.datePickerContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 4px;
+  padding-left: 14px;
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #888888;
+}
+
+.datePickerContainer > span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4375em;
+  font-family: sans-serif;
+  color: #616161;
+  white-space: nowrap;
+  padding-right: 14px;
+}
+
+.datePickerContainer > div > div > input {
+  border: none !important;
+  background: #fafafa !important;
+}
