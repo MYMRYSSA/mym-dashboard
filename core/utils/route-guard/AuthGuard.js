@@ -21,7 +21,6 @@ const AuthGuard = ({ children }) => {
         } catch (e) {
             user = null;
         }
-        console.log("🚀 ~ file: AuthGuard.js ~ line 18 ~ useEffect ~ user", user)
         if (!user) {
             router.push('/login');
             return;

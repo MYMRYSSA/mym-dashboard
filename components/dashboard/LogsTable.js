@@ -3,15 +3,14 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import Pagination from '@material-ui/lab/Pagination';
 import styles from '../../styles/Dashboard.module.css';
 
-export const LogsTable = ({ datasource, page, maxPage, search }) => {
-
+export const LogsTable = ({ datasource, page, maxPage, search, total }) => {
   const formatDocumentIds = (docIds) => {
     const ret = '';
-    docIds.forEach(doc => {
-      ret += `, ${doc}`
-    })
+    docIds.forEach((doc) => {
+      ret += `, ${doc}`;
+    });
     return ret.slice(2, ret.length);
-  }
+  };
 
   const formatDate = (date) => {
     const formatDate = new Date(date);
@@ -19,11 +18,14 @@ export const LogsTable = ({ datasource, page, maxPage, search }) => {
     const mm = formatDate.getMonth();
     const yyyy = formatDate.getFullYear();
     return `${yyyy}-${mm <= 8 ? '0' + (mm + 1) : mm + 1}-${dd}`;
-  }
-
+  };
 
   return (
     <>
+      <div className={styles.logTableInformation}>
+        Mostrando {maxPage === 0 ? 0 : page} / {maxPage} de {total}
+      </div>
+
       <TableContainer className={styles.logTable}>
         <Table>
           <TableHead>

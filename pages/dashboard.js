@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function Page() {
   const [datasource, setDatasource] = useState([]);
   const [maxPage, setMaxPage] = useState(0);
+  const [total, setTotal] = useState(0);
   const [params, setParams] = useState({
     filters: {},
     page: 1
@@ -47,6 +48,7 @@ export default function Page() {
     );
     setDatasource(response?.data?.response?.requests);
     setMaxPage(Math.round(response?.data?.response?.total / 10) + (response?.data?.response?.total % 10 ? 1 : 0));
+    setTotal(response?.data?.response?.total || 0);
   };
 
   useEffect(() => {
@@ -56,7 +58,13 @@ export default function Page() {
   return (
     <AuthGuard>
       <Filters search={(filters) => search(filters, 1)} />
-      <LogsTable search={(page) => search(params.filters, page)} datasource={datasource} page={params.page} maxPage={maxPage} />
+      <LogsTable
+        search={(page) => search(params.filters, page)}
+        datasource={datasource}
+        page={params.page}
+        maxPage={maxPage}
+        total={total}
+      />
     </AuthGuard>
   );
 }
