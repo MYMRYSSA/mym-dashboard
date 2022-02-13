@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=dev node server.js",
     "build": "next build",
-    "start": "next start -p ${PORT:=3000}"
+    "start": "cross-env NODE_ENV=production && node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
@@ -16,6 +16,7 @@
     "@material-ui/utils": "^5.0.0-beta.0",
     "@tabler/icons": "^1.39.1",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^14.0.0",
     "formik": "^2.2.6",
     "next": "latest",

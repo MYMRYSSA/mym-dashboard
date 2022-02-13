@@ -1,4 +1,5 @@
 module.exports = {
+    useFileSystemPublicRoutes: false,
     experimental: {
         outputStandalone: true
     },
