@@ -22,7 +22,7 @@ const server = https.createServer(options, async (req, res) => {
     res.end('internal server error');
   }
 });
-const currentPort = parseInt(process.env.PORT, 10) || 3000;
+const currentPort = parseInt(process.env.PORT, 10) || 3001;
 
 server.listen(currentPort, (err) => {
   if (err) {
@@ -36,7 +36,7 @@ server.listen(currentPort, (err) => {
     dir: path.join(__dirname),
     dev: false,
     conf: {
-      env: { API_URL: 'https://localhost:3000' },
+      env: { API_URL: 'https://localhost:3001' },
       webpack: null,
       webpackDevMiddleware: null,
       eslint: { ignoreDuringBuilds: false },
