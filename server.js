@@ -5,8 +5,8 @@ const fs = require('fs');
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
-const port = 3001;
+const hostname = '0.0.0.0';
+const port = 3000;
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port });
 
