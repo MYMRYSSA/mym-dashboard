@@ -45,7 +45,7 @@ server.listen(currentPort, (err) => {
       cleanDistDir: true,
       assetPrefix: '',
       configOrigin: 'next.config.js',
-      useFileSystemPublicRoutes: false,
+      useFileSystemPublicRoutes: true,
       generateEtags: true,
       pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
       target: 'server',
