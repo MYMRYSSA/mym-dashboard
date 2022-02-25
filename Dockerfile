@@ -37,9 +37,9 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/server.prod.js ./server.js
 COPY --from=builder /app/certs ./certs
 
-EXPOSE 3000
+EXPOSE 443
 
-ENV PORT 3000
+ENV PORT 443
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

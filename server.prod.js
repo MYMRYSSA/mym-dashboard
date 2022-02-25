@@ -8,8 +8,8 @@ const fs = require('fs');
 let handler;
 
 const options = {
-  // key: fs.readFileSync('./certs/ssl.key'),
-  // cert: fs.readFileSync('./certs/ssl.crt'),
+  key: fs.readFileSync('./certs/ssl.key'),
+  cert: fs.readFileSync('./certs/ssl.crt'),
   // ca: [fs.readFileSync('./certs/root.crt')]
 };
 
@@ -22,7 +22,7 @@ const server = https.createServer(options, async (req, res) => {
     res.end('internal server error');
   }
 });
-const currentPort = parseInt(process.env.PORT, 10) || 3000;
+const currentPort = parseInt(process.env.PORT, 10) || 443;
 
 server.listen(currentPort, (err) => {
   if (err) {
@@ -36,7 +36,7 @@ server.listen(currentPort, (err) => {
     dir: path.join(__dirname),
     dev: false,
     conf: {
-      env: { API_URL: 'https://0.0.0.0:3000' },
+      env: { API_URL: 'https://0.0.0.0:443' },
       webpack: null,
       webpackDevMiddleware: null,
       eslint: { ignoreDuringBuilds: false },
