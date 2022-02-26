@@ -4,7 +4,7 @@
 
 1. [Install Docker](https://docs.docker.com/get-docker/) on your machine.
 1. Build your container: `docker build -t nextjs-docker .`.
-1. Run your container: `docker run -p 443:443 nextjs-docker`.
+1. Run your container: `docker run -p 443:443 -p 3000:3000 nextjs-docker`.
 
 You can view your images created with `docker images`.
 
@@ -16,7 +16,8 @@ First, run the development server:
 yarn dev
 ```
 
-Open [http://0.0.0.0:443](http://0.0.0.0:443) with your browser to see the result.
+Open [http://0.0.0.0:443](http://0.0.0.0:443) with your browser to see the app running in https.
+Open [http://0.0.0.0:3000](http://0.0.0.0:3000) with your browser to see the app running in http.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 

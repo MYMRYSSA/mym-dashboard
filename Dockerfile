@@ -38,8 +38,11 @@ COPY --from=builder /app/server.prod.js ./server.js
 COPY --from=builder /app/certs ./certs
 
 EXPOSE 443
+EXPOSE 3000
 
-ENV PORT 443
+ENV PORT_HTTPS 443
+ENV PORT_HTTP 3000
+ENV API_URL https://bancosdev.mym.com.pe
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
